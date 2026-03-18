@@ -4,15 +4,78 @@
 <meta charset="UTF-8">
 <title>Tan19413 tools</title>
 <style>
-  /* แถม: เพิ่ม CSS เล็กน้อยเพื่อให้ดูสะอาดตาขึ้น */
-  body { font-family: sans-serif; line-height: 1.6; text-align: center; }
-  .tool-item { margin-bottom: 20px; }
-  h3 { margin-bottom: 5px; color: #333; }
+  /* การตั้งค่าพื้นฐานสำหรับทั้งหน้า */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ฟอนต์ที่ดูทันสมัย */
+    background-color: #f4f7f6; /* สีพื้นหลังอ่อนๆ ให้สบายตา */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* จัดทุกอย่างให้อยู่กึ่งกลาง */
+  }
+
+  /* ตกแต่งหัวข้อใหญ่ */
+  h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+
+  /* !!! นี่คือส่วนสำคัญ !!! */
+  /* ตกแต่งกรอบของเครื่องมือแต่ละชิ้น ( .tool-item ) */
+  .tool-item {
+    background: white; /* พื้นหลังสีขาวสำหรับแต่ละแอป */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px; /* ขอบมน */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* เงาบางๆ ให้ดูมีมิติ */
+    width: 300px; /* กำหนดความกว้างให้เท่ากันหมด */
+    text-align: center;
+    transition: transform 0.2s; /* เอฟเฟกต์เวลาเมาส์ชี้ */
+  }
+
+  /* เอฟเฟกต์เวลาเอาเมาส์ไปชี้ที่กรอบ */
+  .tool-item:hover {
+    transform: translateY(-5px); /* ยกตัวขึ้นเล็กน้อย */
+  }
+
+  /* ตกแต่งชื่ออธิบาย ( h3 ) */
+  .tool-item h3 {
+    margin: 0 0 10px 0;
+    color: #e67e22; /* สีส้มให้ดูสะดุดตา */
+    font-size: 1.2em;
+  }
+
+  /* ตกแต่งตัวลิงก์ให้ดูเหมือนปุ่ม ( a ) */
+  .tool-item a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db; /* สีน้ำเงิน */
+    color: white; /* สีตัวอักษรบนปุ่ม */
+    text-decoration: none; /* เอาเส้นใต้ตัวอักษรออก */
+    border-radius: 5px; /* ขอบปุ่มมน */
+    font-weight: bold;
+    transition: background-color 0.2s; /* เอฟเฟกต์เวลาเมาส์ชี้ที่ปุ่ม */
+  }
+
+  /* เอฟเฟกต์เวลาเอาเมาส์ไปชี้ที่ปุ่ม */
+  .tool-item a:hover {
+    background-color: #2980b9; /* สีเข้มขึ้นเล็กน้อย */
+  }
+
+  /* จัดการย่อหน้า ( p ) ภายใน tool-item */
+  .tool-item p {
+    margin: 0;
+  }
 </style>
 </head>
 <body>
 
-<h1 style="text-align:center;">Tan19413 tools</h1>
+<h1>Tan19413 tools</h1>
 
 <div class="tool-item">
   <h3>เครื่องคำนวณเกรดเฉลี่ย</h3>
@@ -25,7 +88,7 @@
 </div>
 
 <div class="tool-item">
-  <h3>จำลองการทำงานของลอจิกเกต</h3>
+  <h3>จำลองลอจิกเกต</h3>
   <p><a href="https://44b1f55f.logicgate.pages.dev/">logic gate</a></p>
 </div>
 
