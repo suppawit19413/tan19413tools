@@ -1,100 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<meta charset="UTF-8">
-<title>Tan19413 tools</title>
-<style>
-  /* การตั้งค่าพื้นฐานสำหรับทั้งหน้า */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ฟอนต์ที่ดูทันสมัย */
-    background-color: #f4f7f6; /* สีพื้นหลังอ่อนๆ ให้สบายตา */
-    color: #333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* จัดทุกอย่างให้อยู่กึ่งกลาง */
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tan19413 Tools</title>
+    <style>
+        /* สไตล์พื้นฐาน: เน้นสะอาดและทันสมัย */
+        :root {
+            --primary: #2563eb;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text: #334155;
+        }
 
-  /* ตกแต่งหัวข้อใหญ่ */
-  h1 {
-    color: #2c3e50;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-  }
+        body {
+            font-family: 'Segoe UI', 'Tahoma', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  /* !!! นี่คือส่วนสำคัญ !!! */
-  /* ตกแต่งกรอบของเครื่องมือแต่ละชิ้น ( .tool-item ) */
-  .tool-item {
-    background: white; /* พื้นหลังสีขาวสำหรับแต่ละแอป */
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px; /* ขอบมน */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* เงาบางๆ ให้ดูมีมิติ */
-    width: 300px; /* กำหนดความกว้างให้เท่ากันหมด */
-    text-align: center;
-    transition: transform 0.2s; /* เอฟเฟกต์เวลาเมาส์ชี้ */
-  }
+        /* ส่วนหัวและปุ่มเปลี่ยนภาษา */
+        header {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
 
-  /* เอฟเฟกต์เวลาเอาเมาส์ไปชี้ที่กรอบ */
-  .tool-item:hover {
-    transform: translateY(-5px); /* ยกตัวขึ้นเล็กน้อย */
-  }
+        .lang-btn {
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-  /* ตกแต่งชื่ออธิบาย ( h3 ) */
-  .tool-item h3 {
-    margin: 0 0 10px 0;
-    color: #e67e22; /* สีส้มให้ดูสะดุดตา */
-    font-size: 1.2em;
-  }
+        .lang-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
 
-  /* ตกแต่งตัวลิงก์ให้ดูเหมือนปุ่ม ( a ) */
-  .tool-item a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3498db; /* สีน้ำเงิน */
-    color: white; /* สีตัวอักษรบนปุ่ม */
-    text-decoration: none; /* เอาเส้นใต้ตัวอักษรออก */
-    border-radius: 5px; /* ขอบปุ่มมน */
-    font-weight: bold;
-    transition: background-color 0.2s; /* เอฟเฟกต์เวลาเมาส์ชี้ที่ปุ่ม */
-  }
+        h1 { margin: 0; color: #1e293b; }
 
-  /* เอฟเฟกต์เวลาเอาเมาส์ไปชี้ที่ปุ่ม */
-  .tool-item a:hover {
-    background-color: #2980b9; /* สีเข้มขึ้นเล็กน้อย */
-  }
+        /* จัดวาง Card เป็น Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
 
-  /* จัดการย่อหน้า ( p ) ภายใน tool-item */
-  .tool-item p {
-    margin: 0;
-  }
-</style>
+        /* ตกแต่ง Card */
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+
+        .card-icon { font-size: 40px; margin-bottom: 15px; display: block; }
+
+        .card h3 { margin: 10px 0; color: #1e293b; }
+
+        .card p { font-size: 0.9em; color: #64748b; margin-bottom: 20px; min-height: 40px; }
+
+        /* ปุ่มกด */
+        .btn-open {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .btn-open:hover { opacity: 0.9; }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
-<h1>Tan19413 tools</h1>
+<header>
+    <h1 data-key="main_title">เครื่องมือของ Tan19413</h1>
+    <button class="lang-btn" onclick="switchLang()" id="btn-lang">English</button>
+</header>
 
-<div class="tool-item">
-  <h3>เครื่องคำนวณเกรดเฉลี่ย</h3>
-  <p><a href="https://gpacalculator-csy.pages.dev/">GPA Calculator</a></p>
+<div class="grid">
+    <!-- เว็บที่ 1 -->
+    <div class="card">
+        <div>
+            <span class="card-icon">📊</span>
+            <h3 data-key="gpa_t">เครื่องคำนวณเกรดเฉลี่ย</h3>
+            <p data-key="gpa_d">คำนวณเกรดเฉลี่ยของคุณได้ง่ายๆ และรวดเร็ว</p>
+        </div>
+        <a href="https://gpacalculator-csy.pages.dev/" class="btn-open" data-key="btn_text">เปิดใช้งาน</a>
+    </div>
+
+    <!-- เว็บที่ 2 -->
+    <div class="card">
+        <div>
+            <span class="card-icon">📱</span>
+            <h3 data-key="qr_t">สร้าง QR Code ฟรี</h3>
+            <p data-key="qr_d">สร้าง QR Code สำหรับลิงก์หรือข้อความได้ทันที</p>
+        </div>
+        <a href="https://freeqrgenerator.pages.dev/" class="btn-open" data-key="btn_text">เปิดใช้งาน</a>
+    </div>
+
+    <!-- เว็บที่ 3 -->
+    <div class="card">
+        <div>
+            <span class="card-icon">🔌</span>
+            <h3 data-key="logic_t">จำลองลอจิกเกต</h3>
+            <p data-key="logic_d">ทดลองสร้างวงจรดิจิทัลแบบลอจิกเกตออนไลน์</p>
+        </div>
+        <a href="https://44b1f55f.logicgate.pages.dev/" class="btn-open" data-key="btn_text">เปิดใช้งาน</a>
+    </div>
+
+    <!-- เว็บที่ 4 -->
+    <div class="card">
+        <div>
+            <span class="card-icon">🎓</span>
+            <h3 data-key="tcas_t">TCAS Calculator</h3>
+            <p data-key="tcas_d">เครื่องมือช่วยคำนวณคะแนนสำหรับระบบ TCAS</p>
+        </div>
+        <a href="https://mytcascalculator.pages.dev/" class="btn-open" data-key="btn_text">เปิดใช้งาน</a>
+    </div>
 </div>
 
-<div class="tool-item">
-  <h3>สร้าง QR Code ฟรี</h3>
-  <p><a href="https://freeqrgenerator.pages.dev/">freeqrgenerator</a></p>
-</div>
+<script>
+    // 1. ข้อมูลภาษา (เพิ่ม/แก้ไข ตรงนี้ได้เลย)
+    const langData = {
+        th: {
+            main_title: "เครื่องมือของ Tan19413",
+            btn_text: "เปิดใช้งาน",
+            gpa_t: "เครื่องคำนวณเกรดเฉลี่ย",
+            gpa_d: "คำนวณเกรดเฉลี่ยของคุณได้ง่ายๆ และรวดเร็ว",
+            qr_t: "สร้าง QR Code ฟรี",
+            qr_d: "สร้าง QR Code สำหรับลิงก์หรือข้อความได้ทันที",
+            logic_t: "จำลองลอจิกเกต",
+            logic_d: "ทดลองสร้างวงจรดิจิทัลแบบลอจิกเกตออนไลน์",
+            tcas_t: "TCAS Calculator",
+            tcas_d: "เครื่องมือช่วยคำนวณคะแนนสำหรับระบบ TCAS",
+            next_btn: "English"
+        },
+        en: {
+            main_title: "Tan19413 Tools",
+            btn_text: "Open Tool",
+            gpa_t: "GPA Calculator",
+            gpa_d: "Easily calculate your GPA and GPAX in seconds.",
+            qr_t: "Free QR Generator",
+            qr_d: "Generate QR codes for links or text instantly.",
+            logic_t: "Logic Gate Sim",
+            logic_d: "Experiment with digital logic circuits online.",
+            tcas_t: "TCAS Calculator",
+            tcas_d: "Admission score calculator for TCAS system.",
+            next_btn: "ภาษาไทย"
+        }
+    };
 
-<div class="tool-item">
-  <h3>จำลองลอจิกเกต</h3>
-  <p><a href="https://44b1f55f.logicgate.pages.dev/">logic gate</a></p>
-</div>
+    let currentLang = 'th';
 
-<div class="tool-item">
-  <h3>mytcas calculator</h3>
-  <p><a href="https://mytcascalculator.pages.dev/">tcascalculator</a></p>
-</div>
+    // 2. ฟังก์ชันสลับภาษา (ไม่ต้องแก้ไขส่วนนี้)
+    function switchLang() {
+        currentLang = (currentLang === 'th') ? 'en' : 'th';
+        
+        // วนลูปเปลี่ยนข้อความที่มี data-key ทั้งหมด
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            el.innerText = langData[currentLang][key];
+        });
+
+        // เปลี่ยนข้อความบนปุ่ม
+        document.getElementById('btn-lang').innerText = langData[currentLang].next_btn;
+    }
+</script>
+
 </body>
 </html>
+
