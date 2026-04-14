@@ -104,7 +104,7 @@
 
 <header>
     <h1 data-key="main_title">เครื่องมือของ Tan19413</h1>
-    <button class="lang-btn" onclick="switchLang()" id="btn-lang">English</button>
+   
 </header>
 
 <div class="grid">
@@ -137,55 +137,6 @@
         <a href="https://mytcascalculatorfighton.pages.dev/" class="btn-open" data-key="btn_text">เปิดใช้งาน</a>
     </div>
 </div>
-
-<script>
-    // 1. ข้อมูลภาษา (เพิ่ม/แก้ไข ตรงนี้ได้เลย)
-    const langData = {
-        th: {
-            main_title: "เครื่องมือของ Tan19413",
-            btn_text: "เปิดใช้งาน",
-            gpa_t: "เครื่องคำนวณเกรดเฉลี่ย",
-            gpa_d: "คำนวณเกรดเฉลี่ยของคุณได้ง่ายๆ และรวดเร็ว",
-            qr_t: "สร้าง QR Code ฟรี",
-            qr_d: "สร้าง QR Code สำหรับลิงก์หรือข้อความได้ทันที",
-            logic_t: "จำลองลอจิกเกต",
-            logic_d: "ทดลองสร้างวงจรดิจิทัลแบบลอจิกเกตออนไลน์",
-            tcas_t: "TCAS Calculator",
-            tcas_d: "เครื่องมือช่วยคำนวณคะแนนสำหรับระบบ TCAS",
-            next_btn: "English"
-        },
-        en: {
-            main_title: "Tan19413 Tools",
-            btn_text: "Open Tool",
-            gpa_t: "GPA Calculator",
-            gpa_d: "Easily calculate your GPA and GPAX in seconds.",
-            qr_t: "Free QR Generator",
-            qr_d: "Generate QR codes for links or text instantly.",
-            logic_t: "Logic Gate Sim",
-            logic_d: "Experiment with digital logic circuits online.",
-            tcas_t: "TCAS Calculator",
-            tcas_d: "Admission score calculator for TCAS system.",
-            next_btn: "ภาษาไทย"
-        }
-    };
-
-    let currentLang = 'th';
-
-    // 2. ฟังก์ชันสลับภาษา (ไม่ต้องแก้ไขส่วนนี้)
-    function switchLang() {
-        currentLang = (currentLang === 'th') ? 'en' : 'th';
-        
-        // วนลูปเปลี่ยนข้อความที่มี data-key ทั้งหมด
-        document.querySelectorAll('[data-key]').forEach(el => {
-            const key = el.getAttribute('data-key');
-            el.innerText = langData[currentLang][key];
-        });
-
-        // เปลี่ยนข้อความบนปุ่ม
-        document.getElementById('btn-lang').innerText = langData[currentLang].next_btn;
-    }
-</script>
-
 </body>
 </html>
 
